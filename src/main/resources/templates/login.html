@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	 
+    <!-- Estilo Customizado -->
+    <link rel="stylesheet" type="text/css" href="/css/estilo.css">
+
+    <!-- HTML5Shiv -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <![endif]-->
+
+    <title>Entrar - Cadastro</title>
+  </head>
+  <body>
+    
+    
+    <header>
+      <!--vazio -->
+    </header>
+    
+    <section id="conteudo" ><!--Conteudo-->
+        <div class="container-destaques">
+            <div class="titulo-secao-detalhes-caixa">
+                <h1 id="titulo-secao-detalhes"></h1>
+            </div>
+        </div><!--/ Fim destaque -->
+
+        <div class="container-detalhes"><!-- Container--> <!-- container-fluid para 100% -->
+            <div class="caixa">
+
+                <div class="login-caixa">
+                    <form th:action="@{/login}" method="post">
+                      <h1 id="titulo-secao-detalhes mb-4">Login</h1>
+                      <input type="text" name="username" class="form-control mb-3" id="email_user" aria-describedby="emailHelp" placeholder="Nome de usuário">
+                      <input type="password" name="password" class="form-control mb-3" id="password_user" placeholder="Senha">
+                      <br>
+                      <button type="submit" class="btn btn-dark btn-outline-light">Entrar</button>
+                      
+                      <div th:if="${param.error}">
+	                      <div style="display:block">
+	                      	<bold>Senha ou Username inválido!</bold>
+	                      </div>
+					  </div>
+							
+					  <div th:if="${param.logout}">
+							<div style="display:block">
+								<bold>Você está desconectado!</bold>
+							</div>
+					  </div>
+					  
+                    </form>
+                    
+                    
+                </div>
+                
+                <div class="registrar-caixa">
+                     
+                     <form th:action="@{/process_register}" th:object="${user}" method="post">
+                        <h1 id="titulo-secao-detalhes" class="mb-4">Registrar</h1>
+
+                        <label for="email_" class="form-label">E-mail</label>
+                        <input type="email" th:field="*{email}" class="form-control" id="email_" placeholder="Digite seu endereço de e-mail" aria-describedby="emailHelp">
+
+						<label for="nome_" class="form-label">Nome</label>
+						<input type="text" th:field="*{name}" class="form-control" id="nome_" placeholder="Nome">
+						
+						<label for="ultimo_" class="form-label">Último Nome</label>
+						<input type="text" th:field="*{last_name}" class="form-control" id="ultimo_" placeholder="Último Nome">
+						
+						<label for="username_" class="form-label">Nome de Usuário</label>
+						<input type="text" th:field="*{username}" class="form-control" id="username_" placeholder="Nome de Usuário">
+
+                        <label for="senha_" class="form-label">Senha</label>
+                        <input type="password" th:field="*{password}" class="form-control mb-3" id="senha_" placeholder="Digite a sua senha" aria-describedby="passwordHelp">
+
+                        <button type="submit" class="btn btn-dark btn-outline-light">Continuar</button>
+                    </form>
+                </div>
+                    
+	</section>
+    <footer>
+        <div class="container">
+            <p class="float-right"><a href="">Back to top</a></p>
+            <p>© 2022 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
+        </div>
+    </footer>
+
+  </body>
+</html>
